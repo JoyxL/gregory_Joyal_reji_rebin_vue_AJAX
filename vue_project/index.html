@@ -3,16 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <title>🎮 PlayStation Game Explorer</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
   <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
 </head>
 <body>
   <div id="app">
-    <h1>🎮 Explore Popular PlayStation Games</h1>
+    <h1> Popular PlayStation Games</h1>
 
-    <div class="loading" v-if="loading">Loading awesome games...</div>
+    <div class="loading" v-if="loading">
+      Loading playstation games<span class="dots"></span>
+    </div>
     <div class="error" v-if="error">{{ error }}</div>
 
     <div class="game-list">
@@ -31,47 +33,6 @@
     </div>
   </div>
 
-  <script>
-    new Vue({
-      el: '#app',
-      data: {
-        games: [],
-        selectedGame: null,
-        loading: true,
-        error: null
-      },
-      created() {
-        axios.get('http://localhost:8000/api/games')
-          .then(response => {
-            this.games = response.data;
-            this.loading = false;
-          })
-          .catch((error) => {
-            console.error("Error loading games:", error); 
-            this.error = "Oops! Something went wrong while loading games.";
-            this.loading = false;
-          });
-      },
-      methods: {
-        fetchDetails(id) {
-          this.selectedGame = null;
-          this.loading = true;
-          axios.get(`http://localhost:8000/api/games/${id}`)
-            .then(response => {
-              this.selectedGame = response.data;
-              this.loading = false;
-              this.$nextTick(() => {
-                gsap.from("#details", { opacity: 0, y: 20, duration: 0.5 });
-              });
-            })
-            .catch((error) => {
-              console.error("Error loading game details:", error); 
-              this.error = "Unable to load game details right now.";
-              this.loading = false;
-            });
-        }
-      }
-    });
-  </script>
+  <script src="js/main.js"></script> 
 </body>
 </html>
