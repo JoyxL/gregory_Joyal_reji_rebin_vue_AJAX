@@ -90,7 +90,12 @@ DB_PASSWORD=root
 - Visit: `http://localhost:8000/api/games` — returns full list
 - Visit: `http://localhost:8000/api/games/{id}` — returns one game
 
----
+
+5. ▶️ Run Lumen API Server
+
+php -S localhost:8000 -t public
+
+
 
 ## 🌐 Frontend Setup: Vue.js App
 
