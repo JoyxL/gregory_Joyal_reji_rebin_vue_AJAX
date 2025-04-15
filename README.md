@@ -1,8 +1,8 @@
 # 🎮 gregory_Joyal_reji_rebin_vue_AJAX
 
-A **Vue.js + Lumen** project that displays a list of PlayStation games fetched from a custom API. Users can view game images, genres, and detailed descriptions, all presented in a responsive, animated interface.
+A **Vue + Lumen** project that displays a list of PlayStation games fetched from a custom API. Users can view game images, genres, and detailed descriptions, all presented in a responsive, animated interface.
 
-📚 **Built for a Web Development assignment** that connects a Vue frontend with a Lumen backend using a custom REST API.
+
 
 ---
 
@@ -20,7 +20,6 @@ Build a Vue.js frontend connected to a custom Lumen API that returns and display
 - ✅ Display:
   - A list of games with title, image, and genre
   - Clickable entries that reveal full game details
-- ✅ At least 1 image shown (in list or detail)
 - ✅ Responsive layout (desktop → mobile)
 - ✅ Handle loading and error states
 - ✅ GreenSock (GSAP) animation enhancements
@@ -36,25 +35,24 @@ Build a Vue.js frontend connected to a custom Lumen API that returns and display
 - ✅ [MAMP](https://www.mamp.info) (MySQL + PHP)
 - ✅ [Composer](https://getcomposer.org) (for Lumen)
 - ✅ [VS Code](https://code.visualstudio.com/) (with Live Server extension)
-- ❇️ Optional: Python (to run frontend if not using Live Server)
+
 
 ---
 
 ## 📁 Project Structure
 
 ```
-├── index.html             # Main Vue frontend
-├── js/
-│   └── main.js            # Vue logic for listing & details
-├── css/
-│   └── style.css          # Styling & responsive layout
-├── playstation-api/       # Lumen backend
+├── frontend/
+│   └── index.html            # Main Vue frontend
+│   ├── js/main.js/
+│   ├── css/style.css          # Styling & responsive layout
+├── backend/       # Lumen backend
 │   ├── routes/web.php     # API routes
 │   ├── app/Http/
 │   │   ├── Controllers/GameController.php
 │   │   └── Middleware/CorsMiddleware.php
 │   ├── .env               # Lumen environment variables
-│   └── database/
+│   └── sql/
 │       └── playstation.sql  # SQL schema & seed data
 ```
 
@@ -87,24 +85,6 @@ DB_PORT=8889
 DB_DATABASE=playstation
 DB_USERNAME=root
 DB_PASSWORD=root
-```
-
-### 4. 🧩 Enable Facades, Eloquent, CORS
-
-In `bootstrap/app.php`, make sure you have:
-
-```php
-$app->withFacades();
-$app->withEloquent();
-$app->middleware([
-    App\Http\Middleware\CorsMiddleware::class,
-]);
-```
-
-### 5. ▶️ Run Lumen API Server
-
-```bash
-php -S localhost:8000 -t public
 ```
 
 - Visit: `http://localhost:8000/api/games` — returns full list
